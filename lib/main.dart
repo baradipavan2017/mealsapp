@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meals_app/categories_screen.dart';
+import 'package:meals_app/category_meals_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -19,30 +20,15 @@ class MyApp extends StatelessWidget {
                 fontFamily: 'Montserrat',
                 fontSize: 20.0,
                 fontWeight: FontWeight.bold,
-                
               ),
             ),
       ),
-      home: CategoriesScreen(),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  @override
-  _MyHomeState createState() => _MyHomeState();
-}
-
-class _MyHomeState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(' Meals Time'),
-      ),
-      body: Center(
-        child: Text('Navigation '),
-      ),
+      // home: CategoriesScreen(),
+      initialRoute: '/',
+      routes: {
+        '/': (ctx) => CategoriesScreen(),
+        CategoryMealsScreen.routeName: (ctx) => CategoryMealsScreen(),
+      },
     );
   }
 }
