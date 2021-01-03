@@ -3,7 +3,8 @@ import 'package:meals_app/widgets/main_drawer.dart';
 
 class FiltersScreen extends StatefulWidget {
   static const routeName = '/filters';
-
+  final Function saveFilterss;
+  FiltersScreen(this.saveFilterss);
   @override
   _FiltersScreenState createState() => _FiltersScreenState();
 }
@@ -33,6 +34,20 @@ class _FiltersScreenState extends State<FiltersScreen> {
     return Scaffold(
         appBar: AppBar(
           title: Text('Filter'),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.save),
+              onPressed: () {
+                final selectedFilters = {
+                  'gluten': _glutenFree,
+                  'lactose': _lactoseFree,
+                  'vegan': _vegan,
+                  'vegetarian': _vegetarian,
+                };
+                widget.saveFilterss(selectedFilters);
+              },
+            )
+          ],
         ),
         drawer: MainDrawer(),
         body: Column(
@@ -51,7 +66,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
                     'Gluten-Free',
                     'Only include Gluten-free food',
                     _glutenFree,
-                    (bool newValue) {
+                    (newValue) {
                       setState(() {
                         _glutenFree = newValue;
                       });
@@ -61,7 +76,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
                     'Loctose-Free',
                     'Only include Lactose-free food',
                     _lactoseFree,
-                    (bool newValue) {
+                    (newValue) {
                       setState(() {
                         _lactoseFree = newValue;
                       });
@@ -71,7 +86,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
                     'Vegetarian',
                     'Only include Vegetarian food',
                     _vegetarian,
-                    (bool newValue) {
+                    ( newValue) {
                       setState(() {
                         _vegetarian = newValue;
                       });
@@ -81,7 +96,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
                     'Vegan',
                     'Only include Vegan food',
                     _vegan,
-                    (bool newValue) {
+                    (newValue) {
                       setState(() {
                         _vegan = newValue;
                       });
