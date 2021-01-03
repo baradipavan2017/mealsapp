@@ -9,6 +9,7 @@ class FiltersScreen extends StatefulWidget {
 }
 
 class _FiltersScreenState extends State<FiltersScreen> {
+  // these should be above BubildContext
   bool _glutenFree = false;
   bool _vegetarian = false;
   bool _vegan = false;
@@ -37,7 +38,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
         body: Column(
           children: <Widget>[
             Container(
-              padding: EdgeInsets.all(20),
+              padding: EdgeInsets.all(25),
               child: Text(
                 'Adjust Your Meal Selection',
                 style: Theme.of(context).textTheme.headline6,
